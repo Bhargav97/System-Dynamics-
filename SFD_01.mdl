@@ -1,0 +1,265 @@
+{UTF-8}
+outflow teachers=
+	Number of Teachers*Percent Teachers leaving
+	~	teachers/Year
+	~		|
+
+Number of Teachers= INTEG (
+	inflow teachers-outflow teachers,
+		10)
+	~	teachers
+	~		|
+
+Percent students becoming teachers=
+	0.05
+	~	teachers/(Year*students)
+	~		|
+
+inflow teachers=
+	Number of Students Studying*Percent students becoming teachers
+	~	teachers/Year
+	~		|
+
+Percent Teachers leaving=
+	0.1
+	~	1/Year
+	~		|
+
+Admission Constant=
+	200
+	~	students/Year
+	~	We took 10% of 1000 job spots availalbe, hence creating 160 students (at \
+		the rate of 0.8 passing out) to 100 jobs vacant. Hence, inital should be \
+		200
+	|
+
+Attrition constant=
+	0.1
+	~	1/Year
+	~	just because.
+	|
+
+Attrition of Employees=
+	(Number of Spots for employess in the market-Number of Jobs Vaccant)*Attrition constant
+	~	jobs/Year
+	~		|
+
+inflow jobs=
+	Attrition of Employees+"Job Created/year"
+	~	jobs/Year
+	~		|
+
+Interest of Students=
+	(Number of Jobs Vaccant/Number of Spots for employess in the market)*10
+	~	Dmnl
+	~	10 percent of total spots avail would not bring any change in the interest
+	|
+
+Job application acceptance constant=
+	0.625
+	~	jobs/students
+	~	160 people competing for 100 open spots. hence. 62.5 percent applicants \
+		gets selected
+	|
+
+"Job Created/year"=
+	100*PULSE TRAIN( 0, 1 , 5 , 20 )
+	~	jobs/Year
+	~		|
+
+Job creation=
+	"Job Created/year"
+	~	jobs/Year
+	~		|
+
+"Job destroyed/year"=
+	120*PULSE TRAIN(0, 1 , 8 , 30 )
+	~	jobs/Year
+	~		|
+
+Job destruction=
+	"Job destroyed/year"
+	~	jobs/Year
+	~		|
+
+Number of Jobs Vaccant= INTEG (
+	inflow jobs-outflow jobs,
+		800)
+	~	jobs
+	~		|
+
+Number of Spots for employess in the market= INTEG (
+	Job creation-Job destruction,
+		1000)
+	~	jobs
+	~		|
+
+Number of Students Studying= INTEG (
+	students getting admitted-students passing out,
+		0)
+	~	students
+	~		|
+
+outflow jobs=
+	IF THEN ELSE((Job application acceptance constant*students passing out)>(Number of Jobs Vaccant\
+		*Unit match), Number of Jobs Vaccant*Unit match 
+	, Job application acceptance constant*students passing out )
+	~	jobs/Year
+	~		|
+
+"Pass-out constant"=
+	0.8
+	~	1/Year
+	~	Because we deicded. Grace Marks.
+	|
+
+students getting admitted=
+	Admission Constant*Interest of Students
+	~	students/Year
+	~		|
+
+students passing out=
+	Number of Students Studying*"Pass-out constant"
+	~	students/Year
+	~		|
+
+Unit match=
+	1
+	~	1/Year
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Year
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Year
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Year [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Year [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,75,0
+10,1,Number of Students Studying,576,-128,133,35,3,131,0,0,0,0,0,0
+10,2,Number of Jobs Vaccant,580,78,134,32,3,131,0,0,0,0,0,0
+12,3,48,143,-129,10,8,0,3,0,0,-1,0,0,0
+1,4,6,1,4,0,0,22,0,0,0,-1--1--1,,1|(373,-129)|
+1,5,6,3,100,0,0,22,0,0,0,-1--1--1,,1|(222,-129)|
+11,6,48,298,-129,6,8,34,3,0,0,1,0,0,0
+10,7,students getting admitted,298,-101,106,20,40,131,0,0,-1,0,0,0
+12,8,48,1042,-128,10,8,0,3,0,0,-1,0,0,0
+1,9,11,1,36,0,0,22,2,0,0,-1--1--1,|12||0-0-0,1|(784,-129)|
+1,10,11,8,68,0,0,22,2,0,0,-1--1--1,|12||0-0-0,1|(951,-129)|
+11,11,48,865,-129,6,8,34,3,0,0,1,0,0,0
+10,12,students passing out,865,-107,111,14,40,131,0,0,-1,0,0,0
+10,13,Admission Constant,269,-240,76,13,8,131,0,0,0,0,0,0
+1,14,13,6,1,0,0,0,0,64,0,-1--1--1,,1|(321,-178)|
+10,15,"Pass-out constant",889,-238,56,11,8,131,0,0,0,0,0,0
+1,16,15,11,1,0,0,0,0,64,0,-1--1--1,,1|(915,-188)|
+1,17,1,11,1,0,0,0,0,64,0,-1--1--1,,1|(691,-232)|
+10,18,Interest of Students,133,-42,94,20,8,131,0,0,0,0,0,0
+1,19,18,6,1,0,0,0,0,64,0,-1--1--1,,1|(106,-145)|
+1,20,2,18,1,0,0,0,0,64,0,-1--1--1,,1|(513,3)|
+12,21,48,182,85,10,8,0,3,0,0,-1,0,0,0
+1,22,24,2,4,0,0,22,0,0,0,-1--1--1,,1|(385,85)|
+1,23,24,21,100,0,0,22,0,0,0,-1--1--1,,1|(252,85)|
+11,24,48,319,85,6,8,34,3,0,0,1,0,0,0
+10,25,inflow jobs,319,104,35,11,40,3,0,0,-1,0,0,0
+12,26,48,1089,78,10,8,0,3,0,0,-1,0,0,0
+1,27,29,2,36,0,0,22,2,0,0,-1--1--1,|12||0-0-0,1|(802,78)|
+1,28,29,26,68,0,0,22,2,0,0,-1--1--1,|12||0-0-0,1|(990,78)|
+11,29,48,896,78,6,8,34,3,0,0,1,0,0,0
+10,30,outflow jobs,896,97,40,11,40,3,0,0,-1,0,0,0
+1,31,12,29,0,0,0,0,0,64,0,-1--1--1,,1|(879,-18)|
+10,32,Attrition of Employees,151,173,54,17,8,131,0,0,0,0,0,0
+1,33,32,24,1,0,0,0,0,64,0,-1--1--1,,1|(170,44)|
+1,34,2,32,1,0,0,0,0,64,0,-1--1--1,,1|(428,153)|
+10,35,Number of Spots for employess in the market,591,214,176,28,3,131,0,0,0,0,0,0
+12,36,48,218,223,10,8,0,3,0,0,-1,0,0,0
+1,37,39,35,4,0,0,22,0,0,0,-1--1--1,,1|(371,223)|
+1,38,39,36,100,0,0,22,0,0,0,-1--1--1,,1|(271,223)|
+11,39,48,321,223,6,8,34,3,0,0,1,0,0,0
+10,40,Job creation,321,242,39,11,40,3,0,0,-1,0,0,0
+12,41,48,1113,222,10,8,0,3,0,0,-1,0,0,0
+1,42,44,35,36,0,0,22,2,0,0,-1--1--1,|12||0-0-0,1|(848,222)|
+1,43,44,41,68,0,0,22,2,0,0,-1--1--1,|12||0-0-0,1|(1022,222)|
+11,44,48,935,222,6,8,34,3,0,0,1,0,0,0
+10,45,Job destruction,935,255,48,11,40,131,0,0,-1,0,0,0
+1,46,35,32,1,0,0,0,0,64,0,-1--1--1,,1|(226,292)|
+10,47,Attrition constant,40,206,54,11,8,3,0,0,0,0,0,0
+1,48,47,32,1,0,0,0,0,64,0,-1--1--1,,1|(47,170)|
+1,49,35,18,1,0,0,0,0,64,0,-1--1--1,,1|(94,302)|
+10,50,Job application acceptance constant,1099,-12,119,11,8,131,0,0,0,0,0,0
+1,51,50,29,1,0,0,0,0,64,0,-1--1--1,,1|(921,4)|
+10,52,"Job Created/year",580,357,55,11,8,3,0,0,0,0,0,0
+1,53,52,25,1,0,0,0,0,64,0,-1--1--1,,1|(315,371)|
+1,54,52,39,1,0,0,0,0,64,0,-1--1--1,,1|(355,289)|
+10,55,"Job destroyed/year",993,335,119,22,8,131,0,0,0,0,0,0
+1,56,55,45,1,0,0,0,0,64,0,-1--1--1,,1|(832,306)|
+1,57,2,29,1,0,0,0,0,64,0,-1--1--1,,1|(773,-36)|
+10,58,Unit match,1148,61,35,11,8,3,0,0,0,0,0,0
+1,59,58,29,1,0,0,0,0,64,0,-1--1--1,,1|(990,37)|
+10,60,Number of Teachers,585,500,115,23,3,131,0,0,0,0,0,0
+12,61,48,217,504,10,8,0,3,0,0,-1,0,0,0
+1,63,65,60,4,0,0,22,0,0,0,-1--1--1,,1|(412,504)|
+1,64,65,61,100,0,0,22,0,0,0,-1--1--1,,1|(284,504)|
+11,65,0,348,504,6,8,34,3,0,0,1,0,0,0
+10,66,inflow teachers,348,523,47,11,40,3,0,0,-1,0,0,0
+12,67,48,1051,503,10,8,0,3,0,0,-1,0,0,0
+1,69,71,67,4,0,0,22,0,0,0,-1--1--1,,1|(958,503)|
+1,70,71,60,100,0,0,22,0,0,0,-1--1--1,,1|(782,503)|
+11,71,0,870,503,6,8,34,3,0,0,1,0,0,0
+10,72,outflow teachers,870,522,52,11,40,3,0,0,-1,0,0,0
+10,73,Percent students becoming teachers,378,589,143,36,8,131,0,0,0,0,0,0
+1,74,1,65,1,0,0,0,0,64,0,-1--1--1,,1|(46,291)|
+1,75,73,65,1,0,0,0,0,64,0,-1--1--1,,1|(167,541)|
+10,76,Percent Teachers leaving,917,605,125,29,8,131,0,0,0,0,0,0
+1,77,76,71,1,0,0,0,0,64,0,-1--1--1,,1|(1013,532)|
+1,78,60,72,1,0,0,0,0,64,0,-1--1--1,,1|(699,429)|
+///---\\\
+:GRAPH GRAPH
+:TITLE  
+:SCALE
+:VAR Number of Jobs Vaccant
+:SCALE
+:VAR Number of Students Studying
+:L<%^E!@
+1:Current.vdf
+9:Current
+23:0
+15:0,0,0,0,0,0
+19:75,0
+27:0,
+34:0,
+4:Time
+5:Number of Teachers
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:0
+41:0
+42:1
+24:0
+25:100
+26:100

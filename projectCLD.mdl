@@ -1,0 +1,124 @@
+{UTF-8}
+Interest for STEM  = A FUNCTION OF( Quality of teachers)
+	~	
+	~		|
+
+Awareness  = A FUNCTION OF( Number of Students)
+	~	
+	~		|
+
+Change in curriculum  = A FUNCTION OF( )
+	~	
+	~		|
+
+Facilities  = A FUNCTION OF( Government Funding)
+	~	
+	~		|
+
+Government Funding  = A FUNCTION OF( )
+	~	
+	~		|
+
+Income for teachers  = A FUNCTION OF( Government Funding)
+	~	
+	~		|
+
+Number of Students  = A FUNCTION OF( Awareness,Change in curriculum,Facilities,Interest for STEM\
+		,Number of teachers,Peer influence,Technological advancements)
+	~	
+	~		|
+
+Number of teachers  = A FUNCTION OF( Income for teachers,Number of Students)
+	~	
+	~		|
+
+Peer influence  = A FUNCTION OF( Number of Students)
+	~	
+	~		|
+
+Quality of teachers  = A FUNCTION OF( Number of teachers)
+	~	
+	~		|
+
+Technological advancements  = A FUNCTION OF( Government Funding)
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,5,0
+10,1,Number of Students,612,279,45,20,8,3,0,24,0,0,0,0,0-0-0,0-0-0,|14|B|0-0-0
+10,2,Facilities,336,367,36,11,8,3,0,24,0,0,0,0,0-0-0,0-0-0,|14|B|0-0-0
+10,3,Government Funding,299,142,52,20,8,3,0,24,0,0,0,0,0-0-0,0-0-0,|14|B|0-0-0
+10,4,Change in curriculum,417,243,45,20,8,3,0,24,0,0,0,0,0-0-0,0-0-0,|14|B|0-0-0
+10,5,Technological advancements,756,119,58,20,8,3,0,24,0,0,0,0,0-0-0,0-0-0,|14|B|0-0-0
+10,6,Income for teachers,980,115,46,20,8,3,0,24,0,0,0,0,0-0-0,0-0-0,|14|B|0-0-0
+10,7,Number of teachers,876,330,45,20,8,3,0,24,0,0,0,0,0-0-0,0-0-0,|14|B|0-0-0
+10,8,Awareness,483,440,43,11,8,3,0,24,0,0,0,0,0-0-0,0-0-0,|14|B|0-0-0
+10,9,Quality of teachers,893,190,42,20,8,3,0,24,0,0,0,0,0-0-0,0-0-0,|14|B|0-0-0
+10,10,Peer influence,715,449,57,11,8,3,0,24,0,0,0,0,0-0-0,0-0-0,|14|B|0-0-0
+1,11,4,1,1,0,43,12,10,0,0,-1--1--1,|14||-1--1--1,1|(549,240)|
+1,12,3,6,1,0,43,12,2,0,0,-1--1--1,|0||-1--1--1,1|(801,47)|
+1,13,3,2,1,0,43,12,10,0,0,-1--1--1,|14||-1--1--1,1|(273,263)|
+1,14,2,1,1,0,43,12,10,0,0,-1--1--1,|14||-1--1--1,1|(471,308)|
+1,15,8,1,1,0,43,12,10,0,0,-1--1--1,|14||-1--1--1,1|(563,387)|
+1,16,10,1,1,0,43,12,10,0,0,-1--1--1,|14||-1--1--1,1|(646,387)|
+1,17,1,10,1,0,43,12,10,0,0,-1--1--1,|14||-1--1--1,1|(736,349)|
+1,18,1,8,1,0,43,12,10,0,0,-1--1--1,|14||-1--1--1,1|(488,377)|
+1,19,7,1,1,0,43,12,10,0,0,-1--1--1,|14||-1--1--1,1|(726,226)|
+10,20,Interest for STEM,525,148,46,20,8,3,0,24,0,0,0,0,0-0-0,0-0-0,|14|B|0-0-0
+1,21,5,1,1,0,43,12,10,0,0,-1--1--1,|14||-1--1--1,1|(647,209)|
+1,22,1,7,1,0,43,12,10,0,0,-1--1--1,|14||-1--1--1,1|(750,279)|
+1,23,9,20,1,0,43,12,10,0,0,-1--1--1,|14||-1--1--1,1|(622,178)|
+1,24,20,1,1,0,43,12,10,64,0,-1--1--1,|14||-1--1--1,1|(566,225)|
+1,25,6,7,1,0,43,12,2,0,0,-1--1--1,|0||-1--1--1,1|(1017,317)|
+1,26,7,9,1,0,45,12,10,0,0,-1--1--1,|14||-1--1--1,1|(908,238)|
+1,27,3,5,1,0,43,12,2,0,0,-1--1--1,|0||-1--1--1,1|(549,84)|
+///---\\\
+:L<%^E!@
+9:Current
+23:0
+15:0,0,0,0,0,0
+19:5,0
+27:0,
+34:0,
+5:Interest for STEM
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:2
+41:0
+42:1
+24:0
+25:0
+26:0
